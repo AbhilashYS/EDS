@@ -17,11 +17,11 @@
   --dark-color: #505050;
   --text-color: #131313;
   --link-color: #131313;
-  --link-hover-color: Red;
+  --link-hover-color: #da292e;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --heading-font-family: Roboto Slabroboto-condensed, roboto-condensed-fallback, sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
