@@ -1,6 +1,4 @@
-/* =========================================
-   TRANSPO SERVICES CARDS CSS
-========================================= */
+
 :root {
   --transpo-red: #da292e;
   --text-dark: #090909;
@@ -60,8 +58,7 @@
   width: 100%;
 }
 
-/* 5. The "01, 02" Background Number */
-/* This targets the first line of text you authored in the right column */
+/* 5. Background Number */
 .cards .cards-card-body > p:first-child {
   position: absolute;
   top: 20px;
