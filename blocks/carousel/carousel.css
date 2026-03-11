@@ -151,3 +151,11 @@
 .carousel .carousel-slide-indicators {
   display: none !important;
 }
+
+.carousel-container-new{
+  width: 100%;
+}
+
+.carousel-container .carousel-wrapper {
+  max-width: 100%;
+}
