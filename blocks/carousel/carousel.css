@@ -1,13 +1,6 @@
-/* =========================================
-   TRANSPO HERO CAROUSEL CSS
-========================================= */
-
-/* 1. BREAK OUT OF THE 1200px EDS CONTAINER */
+/* 1. CONTAINER & WRAPPER */
 .carousel-wrapper {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw); /* Pulls the element completely to the left edge */
-  margin-top: -40px; /* Removes the default EDS section top margin */
+  max-width: 100%;
 }
 
 /* 2. CAROUSEL LAYOUT */
@@ -158,4 +151,34 @@
 
 .carousel-container .carousel-wrapper {
   max-width: 100%;
+}
+
+/* 1. Make the paragraph containing the links act as a flexbox row */
+.carousel .carousel-slide-content p {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  gap: 20px !important; /* Space between buttons */
+  flex-wrap: wrap;
+}
+
+/* 2. Target ANY link inside the carousel and turn it into a red button */
+.carousel .carousel-slide-content p a:any-link {
+  background-color: #da292e !important; /* Transpo Red */
+  color: #ffffff !important;
+  padding: 14px 30px !important;
+  border-radius: 5px !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  display: inline-block !important;
+  text-transform: uppercase !important;
+  border: none !important;
+  transition: background-color 0.3s ease !important;
+  line-height: normal !important;
+}
+
+/* 3. Dark hover state */
+.carousel .carousel-slide-content p a:hover {
+  background-color: #243238 !important; /* Transpo Dark Blue/Gray */
+  color: #ffffff !important;
 }
