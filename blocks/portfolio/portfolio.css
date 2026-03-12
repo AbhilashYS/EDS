@@ -14,7 +14,7 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory; 
   gap: 20px;
-  padding: 0; /* Lets the images touch the absolute edges of the screen */
+  padding: 0;
   
   /* Hide the scrollbar */
   scrollbar-width: none; 
@@ -27,7 +27,6 @@
 
 /* 3. Individual Slide Sizing */
 .portfolio-slide {
-  /* Shows 4 items across the FULL screen. They will be much bigger now! */
   flex: 0 0 calc(25% - 15px); 
   scroll-snap-align: start;
   position: relative;
