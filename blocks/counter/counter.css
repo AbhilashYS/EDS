@@ -1,0 +1,88 @@
+.counter-wrapper {
+  padding: 80px 5%;
+  background-color: #ffffff;
+}
+
+.counter {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 1. The 4-Column Grid */
+.counter-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  align-items: center;
+}
+
+/* 2. Individual Counter Item (Flexbox for Icon + Text) */
+.counter-item {
+  display: flex;
+  flex-direction: row; /* Places icon and text side-by-side */
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* 3. Icon Styling */
+.counter-item picture {
+  display: flex;
+  flex-shrink: 0;
+  width: 60px; /* Adjust based on your icon size */
+  height: 60px;
+}
+
+.counter-item picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 4. Text Container Styling */
+.counter-text {
+  display: flex;
+  flex-direction: column; /* Stacks number and label vertically */
+  align-items: flex-start;
+}
+
+/* The Animated Number */
+.counter-number {
+  color: #da292e !important; /* Transpo Red */
+  font-size: 42px !important;
+  font-weight: 700 !important;
+  line-height: 1;
+  margin: 0 0 5px 0 !important;
+  font-family: inherit;
+}
+
+/* The Label (e.g., 'Completed Delivery') */
+.counter-text p {
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+/* Tablet */
+@media (max-width: 1024px) {
+  .counter-row {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    row-gap: 50px;
+  }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+  .counter-row {
+    grid-template-columns: 1fr; /* 1 column */
+  }
+  .counter-item {
+    justify-content: flex-start; /* Align left on mobile */
+    padding-left: 20%;
+  }
+}
