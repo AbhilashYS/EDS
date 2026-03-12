@@ -23,8 +23,8 @@
 /* 2. The Scrolling Track */
 .marquee-track {
   display: inline-flex;
-  white-space: nowrap; /* Forces text to stay on one straight line */
-  animation: marqueeScroll 25s linear infinite; /* 25s speed, adjust as needed */
+  white-space: nowrap;
+  animation: marqueeScroll 50s linear infinite; 
 }
 
 /* 3. The Text Masking Magic */
