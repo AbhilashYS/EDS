@@ -1,0 +1,156 @@
+/* 1. The Breakout Wrapper & Block Spacing */
+.portfolio-wrapper {
+  /* Force full width */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin: 100px 0 100px calc(50% - 50vw) !important; 
+  padding: 0 !important;
+}
+
+/* 2. The Horizontal Slider Container */
+.portfolio-slider {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; 
+  gap: 20px;
+  padding: 0; /* Lets the images touch the absolute edges of the screen */
+  
+  /* Hide the scrollbar */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;  
+}
+
+.portfolio-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* 3. Individual Slide Sizing */
+.portfolio-slide {
+  /* Shows 4 items across the FULL screen. They will be much bigger now! */
+  flex: 0 0 calc(25% - 15px); 
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5; 
+  background: #000;
+  cursor: pointer;
+}
+
+/* 3. The Background Image */
+.portfolio-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+/* Zoom image slightly on hover */
+.portfolio-slide:hover .portfolio-image img {
+  transform: scale(1.1); 
+}
+
+/* 4. THE DARK HOVER OVERLAY WITH BLUR */
+.portfolio-slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(22, 45, 65, 0.85); /* Dark Blue tint */
+  backdrop-filter: blur(3px); /* Modern glassy blur */
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.portfolio-slide:hover::after {
+  opacity: 1;
+}
+
+/* 5. The Content Wrapper */
+.portfolio-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2; /* Keeps text above the blur overlay */
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 6. Typography sliding in from the top */
+.portfolio-content h1,
+.portfolio-content h2,
+.portfolio-content h3 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.4s ease;
+}
+
+.portfolio-content p {
+  color: #e0e0e0;
+  font-size: 14px;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.4s ease;
+  transition-delay: 0.1s; /* Staggers the subtitle animation */
+}
+
+/* Trigger text drop-in on hover */
+.portfolio-slide:hover .portfolio-content h1,
+.portfolio-slide:hover .portfolio-content h2,
+.portfolio-slide:hover .portfolio-content h3,
+.portfolio-slide:hover .portfolio-content p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 7. The Red Arrow Button sliding in from the bottom corner */
+.portfolio-content .button-container {
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  transform: translate(20px, 20px);
+  transition: all 0.4s ease;
+}
+
+.portfolio-slide:hover .portfolio-content .button-container {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.portfolio-content a:any-link {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 60px !important;
+  height: 60px !important;
+  background-color: #da292e !important; /* Transpo Red */
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  border-radius: 0 !important; /* Square corners */
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.portfolio-content a:hover {
+  background-color: #1a1a1a !important; /* Turns black if hovered directly */
+}
