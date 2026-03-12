@@ -1,20 +1,80 @@
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: #f5f6f7; /* Dark background from target design */
+  color: #a0a0a0; /* Light gray text */
+  font-size: 15px;
+  line-height: 1.8;
 }
 
 footer .footer > div {
   margin: auto;
   max-width: 1200px;
-  padding: 40px 24px 24px;
+  padding: 80px 5% 40px;
 }
 
-footer .footer p {
-  margin: 0;
+footer p {
+  margin: 0 0 15px 0;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
-  }
+/* --- THE 4-COLUMN LAYOUT --- */
+footer .columns > div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* --- HEADINGS & RED UNDERLINE --- */
+footer .columns h3 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+/* The small red line under the headings */
+footer .columns h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #da292e; /* Transpo Red */
+}
+
+/* --- COLUMN 4: THE 3x2 GALLERY GRID FIX --- */
+/* 1. Turn the entire 4th column into a grid */
+footer .columns > div > div:nth-child(4) {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 10px !important;
+  align-content: start;
+}
+
+/* 2. Force the heading to span all 3 columns so it stays at the top */
+footer .columns > div > div:nth-child(4) h3 {
+  grid-column: 1 / -1 !important;
+  margin-bottom: 20px !important;
+}
+
+/* 3. MAGIC TRICK: Tell the browser to ignore the <p> wrappers EDS creates */
+footer .columns > div > div:nth-child(4) p {
+  display: contents !important; 
+}
+
+/* 4. Style the actual pictures to be perfectly square/uniform */
+footer .columns > div > div:nth-child(4) picture {
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 4 / 3 !important; /* Keeps them identically proportioned */
+}
+
+footer .columns > div > div:nth-child(4) img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* Crops cleanly */
+  margin: 0 !important;
 }
