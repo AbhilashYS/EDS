@@ -19,8 +19,8 @@ export default function decorate(block) {
   });
 
   block.append(sliderWrapper);
-
-  // 3. Auto-Scroll Logic (Runs every 5 seconds)
+2
+  // 3. Auto-Scroll Logic (Runs every 2 seconds)
   let scrollInterval;
   const startScroll = () => {
     scrollInterval = setInterval(() => {
@@ -39,7 +39,7 @@ export default function decorate(block) {
         // Otherwise, scroll right by one card
         sliderWrapper.scrollBy({ left: slideWidth, behavior: 'smooth' });
       }
-    }, 5000); // 5000 milliseconds = 5 seconds
+    }, 2000); // 2 seconds
   };
 
   // 4. Pause the auto-scroll when the user hovers over the cards
