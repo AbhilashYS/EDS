@@ -16,73 +16,70 @@
   align-items: center;
 }
 
-/* 2. Individual Counter Item (Flexbox for Icon + Text) */
+/* 2. Individual Item Box */
 .counter-item {
-  display: flex;
-  flex-direction: row; /* Places icon and text side-by-side */
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
+  display: flex !important;
+  flex-direction: row !important; /* Forces Icon and Text side-by-side */
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 20px !important;
 }
 
-/* 3. Icon Styling */
-.counter-item picture {
-  display: flex;
+/* 3. The Icon */
+.counter-icon {
+  margin: 0 !important;
   flex-shrink: 0;
-  width: 60px; /* Adjust based on your icon size */
-  height: 60px;
+  width: 65px; 
+  height: 65px;
 }
 
-.counter-item picture img {
+.counter-icon img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  display: block;
 }
 
-/* 4. Text Container Styling */
+/* 4. The Text Wrapper */
 .counter-text {
   display: flex;
-  flex-direction: column; /* Stacks number and label vertically */
+  flex-direction: column; /* Stacks Number on top of Label */
   align-items: flex-start;
 }
 
-/* The Animated Number */
-.counter-number {
+/* The Animated Number (Forces it to be big and red) */
+.counter-text .counter-number {
   color: #da292e !important; /* Transpo Red */
   font-size: 42px !important;
   font-weight: 700 !important;
-  line-height: 1;
+  line-height: 1 !important;
   margin: 0 0 5px 0 !important;
-  font-family: inherit;
 }
 
-/* The Label (e.g., 'Completed Delivery') */
-.counter-text p {
-  color: #1a1a1a;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.3;
+/* The Label */
+.counter-text p:last-child {
+  color: #1a1a1a !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
 }
 
 /* =========================================
    MOBILE RESPONSIVE
 ========================================= */
-/* Tablet */
 @media (max-width: 1024px) {
   .counter-row {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-columns: repeat(2, 1fr); /* 2x2 Grid on Tablets */
     row-gap: 50px;
   }
 }
 
-/* Phone */
 @media (max-width: 600px) {
   .counter-row {
-    grid-template-columns: 1fr; /* 1 column */
+    grid-template-columns: 1fr; /* Stack vertically on Phones */
   }
   .counter-item {
-    justify-content: flex-start; /* Align left on mobile */
-    padding-left: 20%;
+    justify-content: center !important; /* Center everything on mobile */
   }
 }

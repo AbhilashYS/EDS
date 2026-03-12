@@ -1,5 +1,4 @@
 export default function decorate(block) {
-  // Add a class to the inner row for CSS grid
   const row = block.firstElementChild;
   row.classList.add('counter-row');
 
@@ -7,39 +6,39 @@ export default function decorate(block) {
   [...row.children].forEach((col) => {
     col.classList.add('counter-item');
     
-    // Wrap the text inside a div so it sits next to the icon
+    // Create the text wrapper
     const textWrapper = document.createElement('div');
     textWrapper.classList.add('counter-text');
     
-    // Move everything except the picture into the text wrapper
+    // Separate the image from the text
     [...col.children].forEach((child) => {
-      if (child.tagName !== 'PICTURE') {
+      // EDS wraps pictures in <p> tags, so we check if the child contains a picture
+      if (child.querySelector('picture') || child.tagName === 'PICTURE') {
+        child.classList.add('counter-icon');
+      } else {
         textWrapper.append(child);
       }
     });
     col.append(textWrapper);
 
-    // Find the heading containing the number
-    const numberHeading = textWrapper.querySelector('h1, h2, h3, h4, h5, h6');
-    if (numberHeading) {
-      numberHeading.classList.add('counter-number');
-      const text = numberHeading.textContent;
+    // Grab the first line of text as the number
+    const numberElement = textWrapper.children[0];
+    if (numberElement) {
+      numberElement.classList.add('counter-number');
+      const text = numberElement.textContent.trim();
       
-      // Separate digits from symbols (like + or K)
-      const numberMatches = text.match(/[\d.]+/);
-      const suffixMatches = text.match(/[^\d.]+/);
+      // Cleanly extract the digits and the suffix (+ or K)
+      const targetNumber = parseFloat(text.replace(/[^\d.]/g, '')) || 0;
+      const suffix = text.replace(/[\d.]/g, '').trim();
       
-      const targetNumber = numberMatches ? parseFloat(numberMatches[0]) : 0;
-      const suffix = suffixMatches ? suffixMatches[0] : '';
-      
-      // Store target number on element and set initial text to 0
-      numberHeading.dataset.target = targetNumber;
-      numberHeading.dataset.suffix = suffix;
-      numberHeading.textContent = `0${suffix}`;
+      // Setup the data attributes for the animation
+      numberElement.dataset.target = targetNumber;
+      numberElement.dataset.suffix = suffix;
+      numberElement.textContent = `0${suffix}`;
     }
   });
 
-  // Intersection Observer to start counting when scrolled into view
+  // Animation logic
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -47,8 +46,8 @@ export default function decorate(block) {
         counters.forEach((counter) => {
           const target = parseFloat(counter.dataset.target);
           const suffix = counter.dataset.suffix;
-          const duration = 2000; // 2 seconds animation
-          const increment = target / (duration / 16); // 60fps
+          const duration = 2000; // 2 seconds
+          const increment = target / (duration / 16); 
           let current = 0;
 
           const updateCounter = () => {
@@ -62,11 +61,10 @@ export default function decorate(block) {
           };
           updateCounter();
         });
-        // Stop observing once animated
         observer.unobserve(entry.target); 
       }
     });
-  }, { threshold: 0.5 }); // Trigger when 50% of the block is visible
+  }, { threshold: 0.5 }); 
 
   observer.observe(block);
 }
