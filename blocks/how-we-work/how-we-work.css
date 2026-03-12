@@ -1,0 +1,125 @@
+/* 1. The 50/50 Layout */
+.hww-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hww-left, .hww-right {
+  flex: 1;
+}
+
+/* 2. Left Column Typography */
+.hww-left h4 {
+  color: #da292e; /* Transpo Red */
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 15px 0;
+}
+
+.hww-left h2 {
+  font-size: 42px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin: 0 0 40px 0;
+}
+
+/* 3. The Accordion Styles */
+.hww-accordion-item {
+  border-bottom: 1px solid #1a1a1a; /* The dark divider line */
+}
+
+.hww-question {
+  cursor: pointer;
+  position: relative;
+  padding: 20px 40px 20px 0;
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+/* The Down Arrow Icon */
+.hww-question::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #1a1a1a;
+  border-right: 2px solid #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+/* ACTIVE STATE (When opened) */
+.hww-accordion-item.active .hww-question {
+  color: #da292e; /* Turns text red */
+}
+
+/* Flips the arrow UP and turns it red */
+.hww-accordion-item.active .hww-question::after {
+  transform: translateY(-50%) rotate(225deg);
+  border-color: #da292e;
+}
+
+/* The Answer Drawer */
+.hww-answer {
+  max-height: 0;
+  overflow: hidden; /* Hides text when collapsed */
+  color: #666666;
+  line-height: 1.6;
+  padding: 0;
+  transition: max-height 0.4s ease, padding 0.4s ease; /* Smooth slide */
+}
+
+.hww-accordion-item.active .hww-answer {
+  max-height: 300px; /* Expands to show text */
+  padding-bottom: 20px;
+}
+
+/* 4. Right Column Image & Geometric Shapes */
+.hww-right {
+  position: relative;
+}
+
+.hww-right img {
+  width: 100%;
+  height: auto;
+  min-height: 600px;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+/* The Orange Parallelogram */
+.hww-right::before {
+  content: '';
+  position: absolute;
+  left: -50px;
+  top: 10%;
+  width: 120px;
+  height: 100px;
+  background-color: #ff7f4a;
+  transform: skewY(-25deg);
+  z-index: 1; /* Sits behind image */
+}
+
+/* The Dark Teal Parallelogram */
+.hww-right::after {
+  content: '';
+  position: absolute;
+  left: -80px;
+  top: 25%;
+  width: 150px;
+  height: 250px;
+  background-color: #0b2b36;
+  transform: skewY(-25deg);
+  z-index: 3; /* Overlaps the image */
+}

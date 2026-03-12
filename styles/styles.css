@@ -322,3 +322,13 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+/* 1. Adds space between major sections of the page */
+main > .section {
+  padding: 80px 0 !important; /* 80px top and bottom gap */
+}
+
+/* 2. Adds space between multiple blocks IF they are in the same section */
+main > .section > div + div {
+  margin-top: 60px !important; 
+}
